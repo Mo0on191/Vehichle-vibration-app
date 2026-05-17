@@ -347,11 +347,39 @@ footer {
   left: 18px;
   z-index: 300;
 
-  font-size: 28px;
-  background: none;
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+
+  background: transparent;
   border: none;
-  color: var(--text);
   cursor: pointer;
+}
+
+.hamburger span {
+  height: 2px;
+  width: 26px;
+  background: var(--text);
+  border-radius: 999px;
+  transition: 300ms var(--ease);
+  transform-origin: center;
+}
+
+/* X animation */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* SIDEBAR */
