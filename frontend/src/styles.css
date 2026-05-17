@@ -320,7 +320,7 @@ footer {
 }
 
 .info-section:hover {
-  transform: translateY(-6px);
+  transform: translateY(-6px) scale(1.01);
   border-color: rgba(122,162,255,0.4);
   box-shadow: 0 12px 40px rgba(0,0,0,0.35);
 }
