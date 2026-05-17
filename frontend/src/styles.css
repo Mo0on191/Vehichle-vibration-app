@@ -341,6 +341,68 @@ footer {
 .info-card b {
   color: var(--text);
 }
+.hamburger {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 300;
+
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -340px;
+  width: 340px;
+  height: 100%;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  padding: 20px;
+  transition: 300ms var(--ease);
+  z-index: 250;
+  overflow-y: auto;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 200;
+}
+
+.history-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: var(--surface2);
+  transition: 200ms;
+}
+
+.history-item:hover {
+  transform: translateX(4px);
+  background: var(--surface3);
+}
+
+.history-item img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+}
 
 /* MOBILE */
 @media (max-width: 900px) {
