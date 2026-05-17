@@ -414,6 +414,40 @@ footer {
 .sidebar.open {
   left: 0;
 }
+.sidebar-settings {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.settings-title {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.theme-btn {
+  width: 100%;
+  padding: 12px;
+
+  border-radius: 12px;
+  border: 1px solid var(--border);
+
+  background: var(--surface2);
+  color: var(--text);
+
+  cursor: pointer;
+
+  transition: 200ms var(--ease);
+  text-align: left;
+}
+
+.theme-btn:hover {
+  background: var(--surface3);
+  transform: translateY(-2px);
+}
 
 .backdrop {
   position: fixed;
