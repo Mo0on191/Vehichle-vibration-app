@@ -345,18 +345,16 @@ footer {
   color: var(--text);
 }
 
-@media (max-width: 900px) {
-  .dashboard {
-    grid-template-columns: 1fr;
-  }
+.dashboard {
+  grid-template-columns: 1fr;
+}
 
-  .info-section {
-    position: static;
-  }
+.info-section {
+  position: static;
+}
 
-  .video-section video {
-    transform: none;
-  }
+.video-section video {
+  transform: none;
 }
 
 }
