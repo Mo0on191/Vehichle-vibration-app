@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import UploadZone from "./components/UploadZone";
@@ -10,11 +10,14 @@ import "./styles.css";
 export default function App() {
   const [file, setFile] = useState(null);
   const [video, setVideo] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
+  useEffect(() => {
+  document.body.classList.toggle("light", !darkMode);
+}, [darkMode]);
 
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [results, setResults] = useState(null);
-  const [darkMode, setDarkMode] = useState(true);
 
   // 🆕 HISTORY + UI STATE
   const [history, setHistory] = useState([]);
@@ -58,9 +61,7 @@ export default function App() {
       setTimeout(() => {
         setLoading(false);
         setResults(data);
-      useEffect(() => {
-        document.body.classList.toggle("light", !darkMode);
-        }, [darkMode]);
+      
 
         // 🆕 ADD TO HISTORY (expects backend to return name + image)
         const newEntry = {
@@ -78,6 +79,7 @@ export default function App() {
       setLoading(false);
     }
   }
+  
 
   // 🆕 LOAD FROM HISTORY
   function loadFromHistory(item) {
@@ -127,11 +129,11 @@ export default function App() {
   <p className="settings-title">Settings</p>
 
   <button
-    className="theme-btn"
-    onClick={() => setDarkMode((prev) => !prev)}
-  >
-    {darkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
-  </button>
+  className="theme-btn"
+  onClick={() => setDarkMode((prev) => !prev)}
+>
+  {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+</button>
 </div>
       </div>
 
