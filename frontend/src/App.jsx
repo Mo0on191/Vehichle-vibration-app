@@ -89,9 +89,13 @@ export default function App() {
 
       {/* ☰ HAMBURGER */}
       <button
-        className="hamburger"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
+  className={`hamburger ${menuOpen ? "open" : ""}`}
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
         ☰
       </button>
 
