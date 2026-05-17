@@ -317,10 +317,14 @@ footer {
   justify-content: center; 
   height: fit-content;
   max-height: 100%;
+  transition:
+    transform 340ms var(--ease),
+    border-color 340ms var(--ease),
+    box-shadow 340ms var(--ease);
 }
 
 .info-section:hover {
-  transform: translateY(-6px) scale(1.01);
+  transform: translateY(-3px);
   border-color: rgba(122,162,255,0.4);
   box-shadow: 0 12px 40px rgba(0,0,0,0.35);
 }
