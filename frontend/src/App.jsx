@@ -14,6 +14,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [results, setResults] = useState(null);
+  const [darkMode, setDarkMode] = useState(true);
 
   // 🆕 HISTORY + UI STATE
   const [history, setHistory] = useState([]);
@@ -57,6 +58,9 @@ export default function App() {
       setTimeout(() => {
         setLoading(false);
         setResults(data);
+      useEffect(() => {
+        document.body.classList.toggle("light", !darkMode);
+        }, [darkMode]);
 
         // 🆕 ADD TO HISTORY (expects backend to return name + image)
         const newEntry = {
