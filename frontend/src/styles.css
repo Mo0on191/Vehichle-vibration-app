@@ -39,7 +39,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-
+  padding-left: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -341,8 +341,22 @@ footer {
 .info-card b {
   color: var(--text);
 }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(15,17,21,0.8);
+  backdrop-filter: blur(12px);
+}
 .hamburger {
-  position: fixed;
+  position: relative;
   top: 18px;
   left: 18px;
   z-index: 300;
