@@ -34,6 +34,15 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+body.light {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f7;
+  --surface3: #e8ebf3;
+  --border: #d6dbe6;
+  --text: #0f1115;
+  --muted: #4b5565;
+}
 
 header {
   position: sticky;
