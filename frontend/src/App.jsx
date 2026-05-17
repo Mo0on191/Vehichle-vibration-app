@@ -96,8 +96,7 @@ export default function App() {
   <span></span>
   <span></span>
 </button>
-        ☰
-      </button>
+        
 
       {/* 📜 SIDEBAR */}
       <div className={`sidebar ${menuOpen ? "open" : ""}`}>
