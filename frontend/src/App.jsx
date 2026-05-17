@@ -59,21 +59,48 @@ export default function App() {
   return (
     <>
       <Header />
+
       <main>
         <Hero />
 
-        <UploadZone onUpload={handleUpload} />
-
-        {video && <VideoPreview video={video} />}
-
-        {video && !loading && (
-          <button className="analyze-btn" onClick={handleAnalyze}>
-            Analyze Speedbump Crossing
-          </button>
+        {/* BEFORE UPLOAD */}
+        {!video && (
+          <UploadZone onUpload={handleUpload} />
         )}
 
+        {/* AFTER UPLOAD → DASHBOARD */}
+        {video && (
+          <div className="dashboard">
+
+            <div className="video-section">
+              <VideoPreview video={video} />
+            </div>
+
+            <div className="info-section">
+              <h2>Video Info</h2>
+
+              <div className="info-card">
+                <p><b>Name:</b> {file?.name}</p>
+                <p><b>Size:</b> {(file?.size / 1024 / 1024).toFixed(2)} MB</p>
+                <p><b>Type:</b> {file?.type}</p>
+              </div>
+
+              {!loading && (
+                <button
+                  className="analyze-btn"
+                  onClick={handleAnalyze}
+                >
+                  Analyze Speedbump Crossing
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* LOADING */}
         {loading && <Processing progress={progress} />}
 
+        {/* RESULTS */}
         {results && <Results results={results} />}
       </main>
     </>
