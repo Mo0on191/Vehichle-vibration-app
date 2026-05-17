@@ -48,15 +48,14 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  padding-left: 80px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 20px 40px;
+  padding: 20px 40px 20px 80px; 
 
   border-bottom: 1px solid var(--border);
-
   background: rgba(15,17,21,0.8);
   backdrop-filter: blur(12px);
 }
@@ -366,7 +365,7 @@ footer {
 }
 .hamburger {
   position: fixed;
-  top: 18px;
+  top: 22px;
   left: 18px;
   z-index: 9999;
 
@@ -412,9 +411,12 @@ footer {
   left: -340px;
   width: 340px;
   height: 100%;
+
   background: var(--surface);
   border-right: 1px solid var(--border);
-  padding: 20px;
+
+  padding: 90px 20px 20px 20px; 
+
   transition: 300ms var(--ease);
   z-index: 250;
   overflow-y: auto;
