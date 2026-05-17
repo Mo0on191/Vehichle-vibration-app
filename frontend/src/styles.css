@@ -302,7 +302,7 @@ footer {
 .video-section video {
   width: 100%;
   border-radius: 16px;
-  transform: translateY(10px);
+  display: block;
 }
 
 .info-section {
