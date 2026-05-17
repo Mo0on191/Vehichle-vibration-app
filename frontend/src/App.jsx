@@ -10,9 +10,14 @@ import "./styles.css";
 export default function App() {
   const [file, setFile] = useState(null);
   const [video, setVideo] = useState(null);
+
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
   const [results, setResults] = useState(null);
+
+  // 🆕 HISTORY + UI STATE
+  const [history, setHistory] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   function handleUpload(e) {
     const f = e.target.files[0];
@@ -20,6 +25,9 @@ export default function App() {
 
     setFile(f);
     setVideo(URL.createObjectURL(f));
+
+    // reset current view
+    setResults(null);
   }
 
   async function handleAnalyze() {
@@ -49,6 +57,17 @@ export default function App() {
       setTimeout(() => {
         setLoading(false);
         setResults(data);
+
+        // 🆕 ADD TO HISTORY (expects backend to return name + image)
+        const newEntry = {
+          id: crypto.randomUUID(),
+          name: data.name || file.name,
+          image: data.image || null,
+          video,
+          results: data,
+        };
+
+        setHistory((prev) => [newEntry, ...prev]);
       }, 500);
     } catch (err) {
       console.error(err);
@@ -56,19 +75,63 @@ export default function App() {
     }
   }
 
+  // 🆕 LOAD FROM HISTORY
+  function loadFromHistory(item) {
+    setResults(item.results);
+    setVideo(item.video);
+    setFile(null);
+    setMenuOpen(false);
+  }
+
   return (
     <>
       <Header />
+
+      {/* ☰ HAMBURGER */}
+      <button
+        className="hamburger"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        ☰
+      </button>
+
+      {/* 📜 SIDEBAR */}
+      <div className={`sidebar ${menuOpen ? "open" : ""}`}>
+        <h3>History</h3>
+
+        {history.length === 0 && (
+          <p className="muted">No analyzed cars yet</p>
+        )}
+
+        {history.map((item) => (
+          <div
+            key={item.id}
+            className="history-item"
+            onClick={() => loadFromHistory(item)}
+          >
+            {item.image && (
+              <img src={item.image} alt={item.name} />
+            )}
+            <span>{item.name}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* BACKDROP */}
+      {menuOpen && (
+        <div
+          className="backdrop"
+          onClick={() => setMenuOpen(false)}
+        />
+      )}
 
       <main>
         <Hero />
 
         {/* BEFORE UPLOAD */}
-        {!video && (
-          <UploadZone onUpload={handleUpload} />
-        )}
+        {!video && <UploadZone onUpload={handleUpload} />}
 
-        {/* AFTER UPLOAD → DASHBOARD */}
+        {/* DASHBOARD */}
         {video && (
           <div className="dashboard">
 
@@ -81,7 +144,10 @@ export default function App() {
 
               <div className="info-card">
                 <p><b>Name:</b> {file?.name}</p>
-                <p><b>Size:</b> {(file?.size / 1024 / 1024).toFixed(2)} MB</p>
+                <p>
+                  <b>Size:</b>{" "}
+                  {file ? (file.size / 1024 / 1024).toFixed(2) : 0} MB
+                </p>
                 <p><b>Type:</b> {file?.type}</p>
               </div>
 
