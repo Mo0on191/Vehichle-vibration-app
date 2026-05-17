@@ -309,5 +309,54 @@ footer {
   .hero h1 {
     font-size: 54px;
   }
+  .dashboard {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+  align-items: start;
+}
+
+.video-section video {
+  width: 100%;
+  border-radius: 16px;
+  transform: translateY(10px);
+}
+
+.info-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  position: sticky;
+  top: 100px;
+}
+
+.info-card {
+  background: var(--surface2);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.info-card b {
+  color: var(--text);
+}
+
+@media (max-width: 900px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .info-section {
+    position: static;
+  }
+
+  .video-section video {
+    transform: none;
+  }
+}
 
 }
