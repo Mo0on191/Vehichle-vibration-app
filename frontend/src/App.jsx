@@ -122,6 +122,17 @@ export default function App() {
             <span>{item.name}</span>
           </div>
         ))}
+       
+<div className="sidebar-settings">
+  <p className="settings-title">Settings</p>
+
+  <button
+    className="theme-btn"
+    onClick={() => setDarkMode((prev) => !prev)}
+  >
+    {darkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
+  </button>
+</div>
       </div>
 
       {/* BACKDROP */}
