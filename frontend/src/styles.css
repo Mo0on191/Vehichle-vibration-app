@@ -365,10 +365,10 @@ footer {
   backdrop-filter: blur(12px);
 }
 .hamburger {
-  position: relative;
+  position: fixed;
   top: 18px;
   left: 18px;
-  z-index: 300;
+  z-index: 9999;
 
   width: 44px;
   height: 44px;
